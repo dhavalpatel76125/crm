@@ -62,7 +62,6 @@ class KYCController extends Controller
     //update
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'title' => 'required',
             'document_type' => 'required',
@@ -74,7 +73,7 @@ class KYCController extends Controller
         $kyc = Kyc::findOrFail($id);
 
         // if image is not empty
-        if ($request->hasFile('image')) {
+        if ($request->image != null) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->extension();
             $image->move(public_path('images'), $imageName);

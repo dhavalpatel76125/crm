@@ -21,6 +21,7 @@
                                 <th>Role</th>
                                 <th>Action</th>
                                 <th>Add Kyc</th>
+                                <th>Add Money Approval</th>
                             </tr>
                         </thead>
                         <tbody style="text-align: center">
@@ -100,6 +101,12 @@
                     "data": "id",
                     "render": function(data, type, row) {
                         return ` <a href="/users/${data}/kyc" class="bg-black text-white font-bold py-2 px-4 rounded mr-2">Add KYC</a>`;
+                    } 
+                },
+                {
+                    "data": "id",
+                    "render": function(data, type, row) {
+                        return ` <a href="/users/${data}/money-approval" class="bg-black text-white font-bold py-2 px-4 rounded mr-2">Add Money Approval</a>`;
                     } 
                 }
 

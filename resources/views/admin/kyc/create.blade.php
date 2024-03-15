@@ -18,6 +18,7 @@
                     class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                     name="document_type" required>
                     <option value="">Select document type</option>
+                    <option value="payment">Payment</option>
                     <option value="adhar">Adhar Card</option>
                     <option value="pan">PAN Card</option>
                     <option value="passport">Passport</option>

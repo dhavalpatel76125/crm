@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kyc;
+use App\Models\TempTransaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -111,5 +112,54 @@ class DashboardController extends Controller
         $user = auth()->user();
         $referralLink = url('/register' .'/'. $user->affiliate_code);
         return view('admin.referal-link.index', compact('referralLink'));
+    }
+
+    // bank deatails
+    public function bankDetails()
+    {
+        return view('admin.users.bank-details');
+    }
+
+    //add money approval
+    public function addMoneyApproval($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.users.add-money-approval', compact('user', 'id'));
+    }
+
+    //add money approval store
+    public function addMoneyApprovalStore(Request $request)
+    {
+        $request->validate([
+            'money' => 'required',
+            'received_date' => 'required',
+        ]);
+
+        $tempTransaction = new TempTransaction();
+        $tempTransaction->user_id = $request->user_id;
+        $tempTransaction->money = $request->money;
+        $tempTransaction->received_date = $request->received_date;
+        $tempTransaction->save();
+        return redirect()->route('users')->with('success', 'Money added successfully');
+    }
+
+
+    //student list of money approval
+    public function studentMoneyApproval()
+    {
+        return view('admin.student-money-approval.index');
+    }
+
+    //student list of money approval datatable
+    public function studentMoneyApprovalDatatable()
+    {
+        // $tempTransactions = TempTransaction::all();
+
+        // join the user table with temp_transactions table
+        $tempTransactions = TempTransaction::join('users', 'temp_transactions.user_id', '=', 'users.id')
+            ->select('temp_transactions.*', 'users.first_name', 'users.last_name', 'users.email')
+            ->get();
+        
+        return datatables()->of($tempTransactions)->make(true);
     }
 }

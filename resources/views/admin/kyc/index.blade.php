@@ -7,10 +7,10 @@
 
     <div class="w-full overflow-x-hidden border-t flex flex-col" style="overflow: scroll">
         <main class="w-full flex-grow p-6">
-            <h1 class="text-3xl text-black pb-6">KYC DOCUMENTS</h1>
+            <h1 class="text-3xl text-black pb-6">KYC AND PAYMENT DOCUMENTS</h1>
             <div class="w-full flex pb-6">
                 <button id="openModalBtn" href="" onclick="openModal()"
-                    class="p-4 bg-red-600 text-white rounded-md hover:bg-red-600">Add New KYC Document</button>
+                    class="p-4 bg-red-600 text-white rounded-md hover:bg-red-600">Add New Document</button>
             </div>
             <div style="width: 100%;">
                 <div class="flex-wrap mt-6" style="width: 100%;">
@@ -85,7 +85,7 @@
                     "data": null,
                     "render": function(data) {
                         return `<a href="" onclick="openEditModal(${data.id})" class="bg-black  text-white font-bold py-2 px-4 rounded">Edit</a>
-        <form action="kyc/${data.id}" method="POST" class="inline-block">
+        <form action="kyc/${data.id}" method="POST" class="inline-block" style="display:none;">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>

@@ -105,6 +105,18 @@ Route::group(['middleware' => 'auth'], function () {
     // updateStatus
     Route::post('/users/kyc/updatestatus/{id}', [KYCController::class, 'updateStatus'])->name('users.kyc.updateStatus');
 
+    // add money approval
+    Route::get('/users/{id}/money-approval', [DashboardController::class, 'addMoneyApproval'])->name('add.money.approval');
+
+    // add money approval store
+    Route::post('/users/money-approval', [DashboardController::class, 'addMoneyApprovalStore'])->name('add.money.approval.store');
+
+    //student list of money approval
+    Route::get('/students/money-approval', [DashboardController::class, 'studentMoneyApproval'])->name('student.money.approval');
+
+    //student list of money approval datatable
+    Route::get('/students/money-approval/datatable', [DashboardController::class, 'studentMoneyApprovalDatatable'])->name('student.money.approval.datatable');
+
 
     // courses crud with datatable
     //list
@@ -138,6 +150,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // show referal link 
     Route::get('/referal-link', [DashboardController::class, 'referalLink'])->name('referal.link');
+
+    // bank details
+    Route::get('/bank-details', [DashboardController::class, 'bankDetails'])->name('bank.details');
 
     //batches index function
     Route::get('/batches', [BatchController::class, 'index'])->name('batches.index');

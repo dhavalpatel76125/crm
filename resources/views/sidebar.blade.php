@@ -80,6 +80,11 @@
                             Users Kyc
                         </h1>
                     </a>
+                    <a href="{{ url('/students/money-approval') }}">
+                        <h1 class="cursor-pointer p-2 hover:bg-black rounded-md mt-1">
+                            Money Approval List
+                        </h1>
+                    </a>
                 </div>
                 <a href="{{ url('/courses') }}"
                     class="flex items-center {{ request()->is('courses') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} text-white py-4 pl-6 nav-item">
@@ -102,7 +107,7 @@
                 <a href="{{ url('/kyc') }}"
                     class="flex items-center {{ request()->is('kyc') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} text-white py-4 pl-6 nav-item">
                     <i class="fas fa-file mr-3"></i>
-                    KYC Documents
+                    KYC And Payment Documents
                 </a>
 
                 <a href="{{ url('/referral') }}"
@@ -127,6 +132,11 @@
                     class="flex items-center {{ request()->is('payments') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} text-white py-4 pl-6 nav-item">
                     <i class="fas fa-rupee-sign mr-3"></i>
                     Payments
+                </a>
+                <a href="{{ url('/bank-details') }}"
+                    class="flex items-center {{ request()->is('bank-details') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} text-white py-4 pl-6 nav-item">
+                    <i class="fas fa-rupee-sign mr-3"></i>
+                    Bank Details
                 </a>
             @endif
         </nav>
